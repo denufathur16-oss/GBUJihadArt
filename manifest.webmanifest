@@ -1,0 +1,25 @@
+{
+  "name": "Gerakan Beras Umat",
+  "short_name": "GBU",
+  "description": "Aplikasi Gerakan Beras Umat",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#075c37",
+  "theme_color": "#075c37",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

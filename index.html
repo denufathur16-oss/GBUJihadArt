@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#075c37">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gerakan Beras Umat">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Gerakan Beras Umat</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;background:#075c37}
+    body{font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+    #app{position:fixed;inset:0;background:#f4f7f5}
+    iframe{display:block;width:100%;height:100%;border:0;background:#f4f7f5}
+    #offline{display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:10;
+      padding:12px 14px;border-radius:12px;background:#111827;color:#fff;font-size:13px;
+      box-shadow:0 8px 25px rgba(0,0,0,.18)}
+  </style>
+</head>
+<body>
+  <main id="app">
+    <iframe id="gasApp" title="Gerakan Beras Umat" src="https://script.google.com/macros/s/AKfycbx-PhMfqHeic4-a37IuunM2tVBXnubfmtS9gHzf34Celg3O_TLp6KyqlzjUgQqzDOvD/exec" allow="fullscreen"></iframe>
+  </main>
+  <div id="offline">Koneksi internet terputus. Aplikasi membutuhkan koneksi untuk mengambil data Google Sheets.</div>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(console.error);
+      });
+    }
+
+    function updateOnlineState() {
+      document.getElementById("offline").style.display =
+        navigator.onLine ? "none" : "block";
+    }
+    window.addEventListener("online", updateOnlineState);
+    window.addEventListener("offline", updateOnlineState);
+    updateOnlineState();
+  </script>
+</body>
+</html>
